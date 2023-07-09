@@ -49,7 +49,3 @@ As per Android offical docs https://developer.android.com/about/versions/kitkat/
 So, Android SMS server app (non default sms app) has no way to notify http clients about whether delivery was successfull or not. It can only tell whether sms was successfully sent or not. 
 
 
-# Download APK
-Download latest APK from [release section](https://github.com/umer0586/AndroidSMSServer/releases) *(requires Android 5.0 or above)*.
-##
-_You can appreciate this work by buying me a coffee_ :coffee: [https://www.buymeacoffee.com/umerfarooq](https://www.buymeacoffee.com/umerfarooq) 
