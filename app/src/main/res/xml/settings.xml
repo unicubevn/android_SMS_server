@@ -1,0 +1,82 @@
+<PreferenceScreen xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <PreferenceCategory app:title="Server Options">
+
+        <EditTextPreference
+            app:key="@string/pref_key_port_no"
+            app:title="Port No"
+            app:dialogMessage="Enter Port No between 1024 to 49151"
+            app:defaultValue="8080"
+            android:icon="@drawable/icon_info"
+            app:useSimpleSummaryProvider="true" />
+
+
+    </PreferenceCategory>
+
+    <PreferenceCategory app:title="Hotspot Options">
+
+
+        <SwitchPreferenceCompat
+            app:key="@string/pref_key_hotspot"
+            app:defaultValue="false"
+            app:title="Use Hotspot"
+            app:icon="@drawable/ic_wifi_tethering"
+            app:summaryOff="Use your device's hotspot"
+            />
+
+
+
+
+    </PreferenceCategory>
+
+    <PreferenceCategory app:title="Permissions">
+
+
+        <Preference
+            app:key="@string/pref_key_send_sms_permission"
+            app:title="SMS permission"
+            app:icon="@drawable/icon_sms"
+            app:summary="Allow SMS server to send SMS"
+
+            />
+
+
+    </PreferenceCategory>
+
+    <PreferenceCategory app:title="Security">
+
+
+        <SwitchPreferenceCompat
+            app:key="@string/pref_key_secure_connection"
+            app:title="Use secure connection"
+            app:icon="@drawable/icon_lock"
+            app:summary="Communication will be encrypted. App uses self signed certificate so ignore certificate check at client side"
+
+            />
+
+        <SwitchPreferenceCompat
+            app:key="@string/pref_key_password_switch"
+            app:title="Set Password"
+            app:dependency="@string/pref_key_secure_connection"
+            />
+
+       <!--
+
+            default value for password was missing which was causing
+            null pointer exception (app crash) on line 59 passwordPref.setSummary(getAsterisks(passwordPref.getText().length()));
+            https://github.com/umer0586/AndroidSMSServer/issues/1
+       -->
+        <EditTextPreference
+            app:key="@string/pref_key_password"
+            app:defaultValue="1234"
+            app:title="Password"
+            app:summary="Set password"
+            app:dialogMessage="Enter password of at least 4 characters"
+            app:dependency="@string/pref_key_password_switch"
+            />
+
+    </PreferenceCategory>
+
+
+</PreferenceScreen>
